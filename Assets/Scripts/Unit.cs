@@ -26,7 +26,10 @@ public abstract class Unit : MonoBehaviour,
 
     private void Start()
     {
-
+        if (MainManager.Instance != null)
+        {
+            SetColor(MainManager.Instance.teamColor);
+        }
     }
 
     void SetColor(Color c)
@@ -42,12 +45,18 @@ public abstract class Unit : MonoBehaviour,
     {
         if (m_Target != null)
         {
-            float distance = Vector3.Distance(m_Target.transform.position, transform.position);
-            if (distance < 2.0f)
-            {
-                m_Agent.isStopped = true;
-                BuildingInRange();
-            }
+            UnitMovement();
+        }
+    }
+
+
+    public void UnitMovement()
+    {       
+        float distance = Vector3.Distance(m_Target.transform.position, transform.position);
+        if (distance < 2.0f)
+        {
+            m_Agent.isStopped = true;           
+            BuildingInRange();
         }
     }
 
@@ -56,9 +65,10 @@ public abstract class Unit : MonoBehaviour,
         m_Target = target;
 
         if (m_Target != null)
-        {
+        {            
             m_Agent.SetDestination(m_Target.transform.position);
             m_Agent.isStopped = false;
+            
         }
     }
 

@@ -12,6 +12,8 @@ using UnityEditor;
 [DefaultExecutionOrder(1000)]
 public class MenuUIHandler : MonoBehaviour
 {
+
+    
     public ColorPicker ColorPicker;
 
     public void NewColorSelected(Color color)

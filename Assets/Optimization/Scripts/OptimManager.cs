@@ -11,6 +11,7 @@ public class OptimManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Greet();
         for (int i = 0; i < InstanceCount; ++i)
         {
             Vector3 position = new Vector3(
@@ -21,5 +22,10 @@ public class OptimManager : MonoBehaviour
             var newUnit = Instantiate(OptimPrefab, position, Quaternion.identity);
             newUnit.SetAreaSize(Size);
         }
+    }
+
+    public virtual void Greet()
+    {
+        Debug.Log("Hello");
     }
 }
